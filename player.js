@@ -12,17 +12,11 @@ class Player {
     this.positionChangeTimestamp = 0;
     this.position = 0;
 
-    this.dy = 0;
-    this.jumpForce = 15;
-    this.originalHeight = height;
-    this.grounded = false;
-    this.jumpTimer = 0;
-
   }
 
   draw() {
-    if (Date.now() > this.positionChangeTimestamp + 200) {
-      this.position = (this.position + 1) % 7;
+    if (Date.now() > this.positionChangeTimestamp + 100) {
+      this.position = (this.position+1)%7;
       this.positionChangeTimestamp = Date.now();
     }
     this.game.context.drawImage(

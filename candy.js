@@ -19,7 +19,7 @@ class Candy {
   }
 
   draw() {
-    if (Date.now() > this.positionChangeTimestamp) {
+    if (Date.now() > this.positionChangeTimestamp+150) {
       this.position = this.position;
       this.positionChangeTimestamp = Date.now();
     }

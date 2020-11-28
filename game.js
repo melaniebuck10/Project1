@@ -10,18 +10,16 @@ class Game {
     this.player = new Player(this, 180, this.canvas.height / 1.5 - 50 / 5, 50, 50);
     this.lastEnemyTimestamp = 0;
     this.lastCandyTimestamp = 0;
-    this.intervalBetweenEnemies = 5000;
-    this.intervalBetweenCandies = 5000;
+    this.intervalBetweenEnemies = 3000;
+    this.intervalBetweenCandies = 3000;
     this.enemyStartingSpeed = 1;
-    this.candyStartingSpeed = 1;
+    this.candyStartingSpeed = 0.3;
     this.enemies = [];
     this.candies = [];
-    this.score = 100;
+    this.score = 0;
     this.active = true;
     this.keys = [];
   }
-
-
 
   setKeyBindings() {
     window.addEventListener('keydown', (event) => {
@@ -30,19 +28,11 @@ class Game {
           this.player.y -= 10;
           break;
         case 'ArrowDown':
-           this.player.height = 30
+           this.player.y += 10;
           break;
     }
 }
     );
-      window.addEventListener('keyup', (event) => {
-          switch (event.code) {
-              case 'ArrowDown':
-                  this.player.height = this.player.height * 2;
-                  break;
-          }
-      
-      });
     }
   addEnemy() {
     const currentTimeStamp = Date.now();
@@ -109,18 +99,17 @@ class Game {
     }
   }
 
-  checkGameEndingIntersection() {
-    for (let enemy of this.enemies) {
+  EarnPoints() {
+    for (let candy of this.candies) {
       if (
-        (this.player.x + this.player.width >= enemy.x &&
-          this.player.x <= enemy.x + enemy.width &&
-          this.player.y + this.player.height >= enemy.y &&
-          this.player.y <= enemy.y + enemy.height) ||
-        enemy.x + enemy.width < 0
+        (this.player.x + this.player.width >= candy.x &&
+          this.player.x <= candy.x + candy.width &&
+          this.player.y + this.player.height >= candy.y &&
+          this.player.y <= candy.y + candy.height)
       ) {
-        this.score -= 10;
-        const indexOfEnemy = this.enemies.indexOf(enemy);
-        this.enemies.splice(indexOfEnemy, 1);
+        this.score += 10;
+        const indexOfCandy = this.candies.indexOf(candy);
+        this.candies.splice(indexOfCandy, 1);
         // hitSound.play();
       }
     }
@@ -138,10 +127,10 @@ class Game {
 */
   runLogic() {
     this.intervalBetweenEnemies *= 0.9999;
-    this.intervalBetweenCandies *= 0.9999;
+    this.intervalBetweenCandies *= 0.9998;
     this.enemyStartingSpeed *= 1.0001;
-    this.candyStartingSpeed *= 1.0001;
-    /*this.collectGarbage();*/
+    this.candyStartingSpeed *= 0.9999;
+
     this.addEnemy();
     this.addCandy();
     // Call runLogic method for every "element" in game that has it
@@ -161,7 +150,7 @@ class Game {
   drawScore() {
     this.context.fillStyle = 'black';
     this.context.font = '32px sans-serif';
-    this.context.fillText(this.score, 700, 180);
+    this.context.fillText(this.score, 700, 50);
   }
 
   draw() {
@@ -177,3 +166,4 @@ class Game {
     this.drawScore();
   }
 }
+
