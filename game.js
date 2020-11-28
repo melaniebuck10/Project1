@@ -18,6 +18,7 @@ class Game {
     this.candies = [];
     this.score = 100;
     this.active = true;
+    this.keys = [];
   }
 
   setKeyBindings() {
@@ -27,13 +28,18 @@ class Game {
           this.player.y -= 10;
           break;
         case 'ArrowDown':
-           if (keys ['ArrowDwn']) {
-           this.player.height = this.player.height / 2;}
-           else {
-               this.player.height = this.player.height
-           }
+           this.player.height = this.player.height / 2;
           break;
-      }
+    }
+}
+    );
+      window.addEventListener('keyup', (event) => {
+          switch (event.code) {
+              case 'ArrowDown':
+                  this.player.height = this.player.height * 2;
+                  break;
+          }
+
       /*
       if (this.player.y < 0) {
         this.player.y = 0;
@@ -45,7 +51,7 @@ class Game {
         Math.min(this.player.y, this.canvas.height - this.player.height),
         0
       );
-    });
+      });
   }
 
   addEnemy() {
@@ -163,14 +169,11 @@ class Game {
       for (let candy of this.candies) {
         candy.runLogic();
     }
-    for (let bullet of this.bullets) {
-      bullet.runLogic();
-    }
-    this.checkIntersectionBetweenBulletsAndEnemies();
+    /*this.checkIntersectionBetweenBulletsAndEnemies();
     this.checkGameEndingIntersection();
     if (this.score <= 0) {
       this.active = false;
-    }
+    }*/
   }
   }
   drawScore() {

@@ -1,7 +1,7 @@
 const enemyImage = new Image();
 enemyImage.src = 'enemy.png';
 
-class Canndy {
+class Enemy {
   constructor(game, x, y, width, height, speed) {
     this.game = game;
     this.x = x;
