@@ -1,5 +1,5 @@
 const enemyImage = new Image();
-enemyImage.src = 'enemy.png';
+enemyImage.src = 'images/enemy.png';
 
 class Enemy {
   constructor(game, x, y, width, height, speed) {
@@ -24,11 +24,11 @@ class Enemy {
       this.positionChangeTimestamp = Date.now();
     }
     this.game.context.save();
-    this.game.context.translate(this.x + this.width, this.y);
+    this.game.context.translate(this.x, this.y);
     this.game.context.scale(-1, 1);
     this.game.context.drawImage(
       enemyImage,
-      this.position,
+      0,
       0,
       24,
       24,

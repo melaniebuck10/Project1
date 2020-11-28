@@ -1,5 +1,5 @@
 const playerImage = new Image();
-playerImage.src = 'player.png';
+playerImage.src = 'images/check1.png';
 
 class Player {
   constructor(game, x, y, width, height) {
@@ -11,20 +11,18 @@ class Player {
 
     this.positionChangeTimestamp = 0;
     this.position = 0;
-
   }
 
   draw() {
     if (Date.now() > this.positionChangeTimestamp + 100) {
-      this.position = (this.position+1)%7;
       this.positionChangeTimestamp = Date.now();
     }
     this.game.context.drawImage(
       playerImage,
       24 * this.position,
       0,
-      24,
-      24,
+      this.width,
+      this.height,
       this.x,
       this.y,
       this.width,

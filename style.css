@@ -1,22 +1,23 @@
 body {
-    background-image: url(https://lampen-kontor.de/blog/wp-content/uploads/2018/07/LED-Sternenhimmel.jpg);
-    margin: 0;
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-family: sans-serif;
-  }
-  
-  canvas {
-    border: 2px solid white;
-    background-image: url(background.jpg);
-  }
-  
-  button {
-    border: 0;
-    font: inherit;
-    padding: 1em;
-    border: 2px solid white;
-  }
+  background-image: url(https://lampen-kontor.de/blog/wp-content/uploads/2018/07/LED-Sternenhimmel.jpg);
+  margin: 0;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: sans-serif;
+}
 
+canvas {
+  border: 2px solid white;
+  background-image: url(images/background2.jpg);
+  background-size: contain;
+}
+
+button {
+  border: 0;
+  font: inherit;
+  padding: 5em;
+  border: 2px solid white;
+  background-color: gold;
+}

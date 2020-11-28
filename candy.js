@@ -1,5 +1,5 @@
 const candyImage = new Image();
-candyImage.src = 'player.png';
+candyImage.src = 'images/player.png';
 
 class Candy {
   constructor(game, x, y, width, height, speed) {
@@ -19,16 +19,16 @@ class Candy {
   }
 
   draw() {
-    if (Date.now() > this.positionChangeTimestamp+150) {
+    if (Date.now() > this.positionChangeTimestamp + 150) {
       this.position = this.position;
       this.positionChangeTimestamp = Date.now();
     }
     this.game.context.save();
-    this.game.context.translate(this.x + this.width, this.y);
+    this.game.context.translate(this.x, this.y);
     this.game.context.scale(-1, 1);
     this.game.context.drawImage(
       candyImage,
-      this.position,
+      this.position * 24,
       0,
       24,
       24,
@@ -40,4 +40,3 @@ class Candy {
     this.game.context.restore();
   }
 }
-
