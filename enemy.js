@@ -20,7 +20,7 @@ class Enemy {
 
   draw() {
     if (Date.now() > this.positionChangeTimestamp) {
-      this.position = this.position;
+      this.position = 0;
       this.positionChangeTimestamp = Date.now();
     }
     this.game.context.save();

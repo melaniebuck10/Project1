@@ -21,6 +21,8 @@ class Game {
     this.keys = [];
   }
 
+
+
   setKeyBindings() {
     window.addEventListener('keydown', (event) => {
       switch (event.code) {
@@ -28,7 +30,7 @@ class Game {
           this.player.y -= 10;
           break;
         case 'ArrowDown':
-           this.player.height = this.player.height / 2;
+           this.player.height = 30
           break;
     }
 }
@@ -39,21 +41,9 @@ class Game {
                   this.player.height = this.player.height * 2;
                   break;
           }
-
-      /*
-      if (this.player.y < 0) {
-        this.player.y = 0;
-      } else if (this.player.y + this.player.height > this.canvas.height) {
-        this.player.y = this.canvas.height - this.player.height; 
-      }
-      */
-      this.player.y = Math.max(
-        Math.min(this.player.y, this.canvas.height - this.player.height),
-        0
-      );
+      
       });
-  }
-
+    }
   addEnemy() {
     const currentTimeStamp = Date.now();
     if (
@@ -63,7 +53,7 @@ class Game {
       const enemy = new Enemy(
         this,
         this.canvas.width,
-        this.canvas.height - 150,
+        Math.random() * (this.canvas.height-50),
         50,
         50,
         this.enemyStartingSpeed
@@ -77,18 +67,18 @@ class Game {
     const currentTimeStamp = Date.now();
     if (
       currentTimeStamp >
-      this.lastCandyTimeStamp + this.intervalBetweenCandies
+      this.lastCandyTimestamp + this.intervalBetweenCandies
     ) {
       const candy = new Candy(
         this,
         this.canvas.width,
-        this.canvas.height - 150,
+        Math.random() * (this.canvas.height-50),
         50,
         50,
         this.candyStartingSpeed
       );
       this.candies.push(candy);
-      this.lastCandyTimeStamp = currentTimeStamp;
+      this.lastCandyTimestamp = currentTimeStamp;
     }
   }
 
@@ -136,24 +126,16 @@ class Game {
     }
   }
 
-  checkIntersectionBetweenBulletsAndEnemies() {
-    for (let bullet of this.bullets) {
-      for (let enemy of this.enemies) {
+ /* checkIntersectionBetweenPlayerAndEnemies() {
+        for (let enemy of this.enemies) {
         if (
-          bullet.x >= enemy.x - bullet.width &&
-          bullet.y >= enemy.y &&
-          bullet.y <= enemy.y + enemy.height
-        ) {
-          const indexOfBullet = this.bullets.indexOf(bullet);
-          const indexOfEnemy = this.enemies.indexOf(enemy);
-          this.bullets.splice(indexOfBullet, 1);
-          this.enemies.splice(indexOfEnemy, 1);
-          this.score += 10;
-        }
-      }
+          player.x >= enemy.x - player.width &&
+          player.y >= enemy.y &&
+          player.y <= enemy.y + enemy.height
+        ) 
     }
   }
-
+*/
   runLogic() {
     this.intervalBetweenEnemies *= 0.9999;
     this.intervalBetweenCandies *= 0.9999;
@@ -169,7 +151,7 @@ class Game {
       for (let candy of this.candies) {
         candy.runLogic();
     }
-    /*this.checkIntersectionBetweenBulletsAndEnemies();
+   /* this.checkIntersectionBetweenPlayerAndEnemies();
     this.checkGameEndingIntersection();
     if (this.score <= 0) {
       this.active = false;
@@ -178,8 +160,8 @@ class Game {
   }
   drawScore() {
     this.context.fillStyle = 'black';
-    this.context.font = '64px sans-serif';
-    this.context.fillText(this.score, 600, 350);
+    this.context.font = '32px sans-serif';
+    this.context.fillText(this.score, 700, 180);
   }
 
   draw() {

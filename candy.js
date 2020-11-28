@@ -1,5 +1,5 @@
 const candyImage = new Image();
-candyImage.src = 'enemy.png';
+candyImage.src = 'player.png';
 
 class Candy {
   constructor(game, x, y, width, height, speed) {
@@ -27,7 +27,7 @@ class Candy {
     this.game.context.translate(this.x + this.width, this.y);
     this.game.context.scale(-1, 1);
     this.game.context.drawImage(
-      enemyImage,
+      candyImage,
       this.position,
       0,
       24,
