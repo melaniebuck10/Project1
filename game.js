@@ -1,3 +1,7 @@
+const hitSound = new Audio('sounds/Jingle.wav');
+const introSound = new Audio ('Intro.mp3');
+const gameOver = new Audio ('sounds/GameOver.wav');
+
 class Game {
   constructor(canvas) {
     this.canvas = canvas;
@@ -69,8 +73,8 @@ class Game {
         this,
         this.canvas.width,
         Math.random() * (this.canvas.height - 50),
-        50,
-        50,
+        73,
+        73,
         this.candyStartingSpeed
       );
       this.candies.push(candy);
@@ -108,7 +112,7 @@ class Game {
   EarnPoints() {
     for (let candy of this.candies) {
       if (
-        this.player.x + this.player.width >= candy.x &&
+        this.player.x + this.player.width >= candy.x -30 &&
         this.player.x <= candy.x + candy.width &&
         this.player.y + this.player.height >= candy.y &&
         this.player.y <= candy.y + candy.height
@@ -116,7 +120,7 @@ class Game {
         this.score += 10;
         const indexOfCandy = this.candies.indexOf(candy);
         this.candies.splice(indexOfCandy, 1);
-        // hitSound.play();
+        hitSound.play();
       }
     }
   }
@@ -124,11 +128,13 @@ class Game {
    playerHitsEnemyThenGameOver() {
         for (let enemy of this.enemies) {
         if (
-          player.x >= enemy.x - player.width &&
-          player.y >= enemy.y &&
-          player.y <= enemy.y + enemy.height
+        this.player.x + this.player.width >= enemy.x -30 &&
+        this.player.x <= enemy.x + enemy.width  &&
+        this.player.y + this.player.height >= enemy.y +20 &&
+        this.player.y <= enemy.y  + enemy.height 
         ) {
           this.active = false;
+          gameOver.play();
         }
     }
   }
@@ -150,12 +156,13 @@ class Game {
       candy.runLogic();
     }
     this.EarnPoints();
+    this.playerHitsEnemyThenGameOver ();
   }
 
   drawScore() {
     this.context.fillStyle = 'black';
     this.context.font = '32px sans-serif';
-    this.context.fillText(this.score, 700, 50);
+    this.context.fillText(this.score, 650, 50);
   }
 
   draw() {

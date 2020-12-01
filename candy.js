@@ -32,10 +32,10 @@ class Candy {
       0,
       this.width,
       this.height,
-      this.x,
+      /*this.x,
       this.y,
       this.width,
-      this.height
+      this.height*/
     );
     this.game.context.restore();
   }

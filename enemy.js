@@ -9,6 +9,8 @@ class Enemy {
     this.width = width;
     this.height = height;
     this.speed = speed;
+    this.enemyImage = new Image
+    this.enemyImage.src = 'images/TheGrinch.png'
 
     this.positionChangeTimestamp = 0;
     this.position = 0;
@@ -27,15 +29,15 @@ class Enemy {
     this.game.context.translate(this.x, this.y);
     this.game.context.scale(-1, 1);
     this.game.context.drawImage(
-      enemyImage,
+      this.enemyImage,
       this.position * 24,
       0,
       this.width,
       this.height,
-      this.x,
+      /*this.x,
       this.y,
       this.width,
-      this.height
+      this.height*/
     );
     this.game.context.restore();
   }
