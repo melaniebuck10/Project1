@@ -17,7 +17,6 @@ triggerPlayElement.addEventListener('click', () => {
 });
 
 triggerPlayAgainElement.addEventListener('click', () => {
-  debugger;
   screenGameOverElement.style.display = 'none';
   screenPlayElement.style.display = 'initial';
 

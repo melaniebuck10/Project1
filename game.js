@@ -11,8 +11,8 @@ class Game {
       this,
       100,
       this.canvas.height / 1.5 - 50 / 5,
-      93,
-      64
+      150,
+      73
     );
     this.lastEnemyTimestamp = 0;
     this.lastCandyTimestamp = 0;
@@ -50,8 +50,8 @@ class Game {
         this,
         this.canvas.width,
         Math.random() * (this.canvas.height - 50),
-        50,
-        50,
+        73,
+        73,
         this.enemyStartingSpeed
       );
       this.enemies.push(enemy);
@@ -121,16 +121,18 @@ class Game {
     }
   }
 
-  /* checkIntersectionBetweenPlayerAndEnemies() {
+   playerHitsEnemyThenGameOver() {
         for (let enemy of this.enemies) {
         if (
           player.x >= enemy.x - player.width &&
           player.y >= enemy.y &&
           player.y <= enemy.y + enemy.height
-        ) 
+        ) {
+          this.active = false;
+        }
     }
   }
-*/
+
   runLogic() {
     this.intervalBetweenEnemies *= 0.9999;
     this.intervalBetweenCandies *= 0.9999;
@@ -142,11 +144,7 @@ class Game {
     // Call runLogic method for every "element" in game that has it
     for (let enemy of this.enemies) {
       enemy.runLogic();
-      /* this.checkIntersectionBetweenPlayerAndEnemies();
-      this.checkGameEndingIntersection();
-      if (this.score <= 0) {
-        this.active = false;
-      }*/
+      
     }
     for (let candy of this.candies) {
       candy.runLogic();

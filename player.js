@@ -1,5 +1,5 @@
 const playerImage = new Image();
-playerImage.src = 'images/check1.png';
+playerImage.src = 'images/SantaFinal.png';
 
 class Player {
   constructor(game, x, y, width, height) {

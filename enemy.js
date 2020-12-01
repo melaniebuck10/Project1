@@ -1,5 +1,5 @@
 const enemyImage = new Image();
-enemyImage.src = 'images/enemy.png';
+enemyImage.src = 'images/TheGrinch.png';
 
 class Enemy {
   constructor(game, x, y, width, height, speed) {
@@ -28,12 +28,12 @@ class Enemy {
     this.game.context.scale(-1, 1);
     this.game.context.drawImage(
       enemyImage,
+      this.position * 24,
       0,
-      0,
-      24,
-      24,
-      0,
-      0,
+      this.width,
+      this.height,
+      this.x,
+      this.y,
       this.width,
       this.height
     );

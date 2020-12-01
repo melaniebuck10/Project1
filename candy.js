@@ -1,5 +1,5 @@
 const candyImage = new Image();
-candyImage.src = 'images/player.png';
+candyImage.src = 'images/CandyCane.png';
 
 class Candy {
   constructor(game, x, y, width, height, speed) {
@@ -30,10 +30,10 @@ class Candy {
       candyImage,
       this.position * 24,
       0,
-      24,
-      24,
-      0,
-      0,
+      this.width,
+      this.height,
+      this.x,
+      this.y,
       this.width,
       this.height
     );
