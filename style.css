@@ -17,9 +17,10 @@ canvas {
 button {
   border: 0;
   font: inherit;
-  padding: 5em;
+  padding: 3em;
   border: 2px solid white;
   background-color:lightblue;
+  
 }
 
 h1 {

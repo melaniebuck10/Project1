@@ -1,7 +1,9 @@
 const hitSound = new Audio('sounds/Jingle.wav');
 const introSound = new Audio ('sounds/Intro.mp3');
+introSound.volume = 0.2;
 const gameOver = new Audio ('sounds/GameOver.wav');
 const gameMusic = new Audio ('sounds/GameMusic.mp3');
+gameMusic.volume = 0.2;
 
 class Game {
   constructor(canvas) {
@@ -55,8 +57,8 @@ class Game {
         this,
         this.canvas.width,
         Math.random() * (this.canvas.height - 50),
-        73,
-        73,
+        60,
+        60,
         this.enemyStartingSpeed
       );
       this.enemies.push(enemy);
@@ -107,9 +109,9 @@ class Game {
     if (this.active) {
       window.requestAnimationFrame(() => {
         this.loop();
-        gameMusic.play ();
       });
     } else {
+      gameMusic.pause();
       screenPlayElement.style.display = 'none';
       screenGameOverElement.style.display = 'initial';
       
@@ -138,10 +140,9 @@ class Game {
         this.player.x + this.player.width >= enemy.x -30 &&
         this.player.x <= enemy.x + enemy.width  &&
         this.player.y + this.player.height >= enemy.y +20 &&
-        this.player.y <= enemy.y  + enemy.height 
+        this.player.y <= enemy.y + enemy.height
         ) {
           this.active = false;
-          gameMusic.pause();
           gameOver.play();
         }
     }

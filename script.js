@@ -9,9 +9,15 @@ const screenStartElement = document.getElementById('screen-start');
 const screenGameOverElement = document.getElementById('screen-game-over');
 const screenPlayElement = document.getElementById('screen-play');
 
+window.addEventListener('load', () =>{
+  introSound.play ();
+})
+
 triggerPlayElement.addEventListener('click', () => {
+  introSound.pause ();
   screenStartElement.style.display = 'none';
   screenPlayElement.style.display = 'initial';
+  gameMusic.play();
 
   game.loop();
 });
@@ -19,6 +25,7 @@ triggerPlayElement.addEventListener('click', () => {
 triggerPlayAgainElement.addEventListener('click', () => {
   screenGameOverElement.style.display = 'none';
   screenPlayElement.style.display = 'initial';
+ 
 
   game.reset();
   game.loop();
