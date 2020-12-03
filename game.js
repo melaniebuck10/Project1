@@ -1,6 +1,7 @@
 const hitSound = new Audio('sounds/Jingle.wav');
-const introSound = new Audio ('Intro.mp3');
+const introSound = new Audio ('sounds/Intro.mp3');
 const gameOver = new Audio ('sounds/GameOver.wav');
+const gameMusic = new Audio ('sounds/GameMusic.mp3');
 
 class Game {
   constructor(canvas) {
@@ -60,6 +61,7 @@ class Game {
       );
       this.enemies.push(enemy);
       this.lastEnemyTimestamp = currentTimeStamp;
+      
     }
   }
 
@@ -82,30 +84,35 @@ class Game {
     }
   }
 
-  /* collectGarbage() {
-    for (let bullet of this.bullets) {
-      if (bullet.x >= this.canvas.width) {
-        const indexOfBullet = this.bullets.indexOf(bullet);
-        this.bullets.splice(indexOfBullet, 1);
+   collectGarbage() {
+    for (let enemy of this.enemies) {
+      if (enemy.x >= this.canvas.width) {
+        const indexOfEnemy = this.enemies.indexOf(enemy);
+        this.enemies.splice(indexOfEnemy, 1);
+      }
+    }
+    for (let candy of this.candies) {
+      if (candy.x >= this.canvas.width) {
+        const indexOfCandy = this.candies.indexOf(candy);
+        this.candies.splice(indexOfCandy, 1);
       }
     }
   }
-*/
+
   loop() {
+
     this.runLogic();
     this.draw();
-    /*
-    setTimeout(() => {
-      this.loop();
-    }, 1000 / 30);
-    */
+    
     if (this.active) {
       window.requestAnimationFrame(() => {
         this.loop();
+        gameMusic.play ();
       });
     } else {
       screenPlayElement.style.display = 'none';
       screenGameOverElement.style.display = 'initial';
+      
     }
   }
 
@@ -134,6 +141,7 @@ class Game {
         this.player.y <= enemy.y  + enemy.height 
         ) {
           this.active = false;
+          gameMusic.pause();
           gameOver.play();
         }
     }
