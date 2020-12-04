@@ -17,9 +17,9 @@ triggerPlayElement.addEventListener('click', () => {
   introSound.pause ();
   screenStartElement.style.display = 'none';
   screenPlayElement.style.display = 'initial';
-  gameMusic.play();
 
   game.loop();
+  gameMusic.play();
 });
 
 triggerPlayAgainElement.addEventListener('click', () => {

@@ -138,7 +138,7 @@ class Game {
         for (let enemy of this.enemies) {
         if (
         this.player.x + this.player.width >= enemy.x -30 &&
-        this.player.x <= enemy.x + enemy.width  &&
+        this.player.x <= enemy.x + enemy.width -50  &&
         this.player.y + this.player.height >= enemy.y +20 &&
         this.player.y <= enemy.y + enemy.height
         ) {
