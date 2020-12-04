@@ -22,11 +22,14 @@ triggerPlayElement.addEventListener('click', () => {
   gameMusic.play();
 });
 
+
 triggerPlayAgainElement.addEventListener('click', () => {
   screenGameOverElement.style.display = 'none';
   screenPlayElement.style.display = 'initial';
  
-
+  gameMusic.pause();
   game.reset();
   game.loop();
+
+  gameMusic.play();
 });
