@@ -5,12 +5,16 @@ const game = new Game(canvasElement);
 const triggerPlayElement = document.getElementById('trigger-play');
 const triggerPlayAgainElement = document.getElementById('trigger-play-again');
 
+
+//const triggerMuteButtonElement = document.getElementById('mutebtn');
+
 const screenStartElement = document.getElementById('screen-start');
 const screenGameOverElement = document.getElementById('screen-game-over');
 const screenPlayElement = document.getElementById('screen-play');
+//const screenMuteButtonElement = document.getElementById('MuteButton');
 
 window.addEventListener('load', () =>{
-  introSound.play ();
+  introSound.play();
 })
 
 triggerPlayElement.addEventListener('click', () => {

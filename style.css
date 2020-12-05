@@ -26,3 +26,12 @@ button {
 h1 {
   color: white;
 }
+
+/*button#mutebtn {
+  background: url(images/MuteButton.png) no-repeat;
+  background-color: red;
+  border: none;
+  width: 12px;
+  height:14px;
+  cursor: pointer;
+}

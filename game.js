@@ -47,6 +47,21 @@ class Game {
     });
   }
 
+/*audioPlayer () {
+  const triggerMuteButtonElement = document.getElementById('mutebtn');
+  triggerMuteButtonElement.addEventListener('click', mute);
+
+  function mute () {
+    if (gameMusic.muted) {
+      gameMusic.muted = false;
+      triggerMuteButtonElement.style.background = "url(images/PlayButton.png) no repeat";  
+    } else {
+      gameMusic.muted=true;
+      triggerMuteButtonElement.style.background = "'url(images/MuteButton.png) no repeat";
+    }
+  }
+}*/
+
   addEnemy() {
     const currentTimeStamp = Date.now();
     if (
